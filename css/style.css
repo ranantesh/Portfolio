@@ -649,7 +649,10 @@ iframe::-webkit-scrollbar {
 	-o-background-size:cover;
 	background-size:cover;
 }
-.color-bg {
+@media (max-width: 767px) {
+  .about-image {
+    background-position: center;
+  }
 	background: #E04343;
 }
 
