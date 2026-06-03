@@ -1727,19 +1727,24 @@ img, svg {
     gap: 16px;
 }
 
-.form-group {
+.modal-form .form-group {
     display: flex;
     flex-direction: column;
     gap: 6px;
+    position: static;
 }
 
-.form-label {
+.modal-form .form-label {
+    position: static;
+    transform: none !important;
+    pointer-events: auto;
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--text-secondary);
+    margin-bottom: 2px;
 }
 
-.form-input {
+.modal-form .form-input {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid var(--border-glass);
     border-radius: var(--radius-sm);

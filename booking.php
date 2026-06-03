@@ -4,6 +4,10 @@
  * Handles secure, AJAX-based free call booking requests.
  */
 
+// Suppress warnings to ensure valid JSON response
+error_reporting(0);
+ini_set('display_errors', 0);
+
 // Set JSON header response
 header('Content-Type: application/json; charset=UTF-8');
 
