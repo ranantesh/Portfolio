@@ -46,6 +46,7 @@ if ($is_logged_in) {
 
         // Handle Status Update
         if (isset($_POST['action']) && isset($_POST['id'])) {
+            file_put_contents(__DIR__ . '/bookings_log.txt', "Admin Action: " . print_r($_POST, true) . "\n", FILE_APPEND);
             $id = (int)$_POST['id'];
             if ($_POST['action'] === 'complete') {
                 $stmt = $pdo->prepare("UPDATE bookings SET status = 'Completed' WHERE id = :id");
@@ -54,7 +55,7 @@ if ($is_logged_in) {
                 $stmt = $pdo->prepare("DELETE FROM bookings WHERE id = :id");
                 $stmt->execute([':id' => $id]);
             }
-            header("Location: admin.php");
+            header("Location: " . $_SERVER['REQUEST_URI']);
             exit;
         }
 
@@ -181,13 +182,20 @@ if ($is_logged_in) {
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <form method="POST" action="" class="action-btns">
-                                        <input type="hidden" name="id" value="<?php echo $b['id']; ?>">
+                                    <div class="action-btns">
                                         <?php if ($b['status'] !== 'Completed'): ?>
-                                            <button type="submit" name="action" value="complete" class="btn-sm btn-success" title="Mark Completed">✓</button>
+                                            <form method="POST" action="" style="margin: 0;">
+                                                <input type="hidden" name="id" value="<?php echo $b['id']; ?>">
+                                                <input type="hidden" name="action" value="complete">
+                                                <button type="submit" class="btn-sm btn-success" title="Mark Completed">✓</button>
+                                            </form>
                                         <?php endif; ?>
-                                        <button type="submit" name="action" value="delete" class="btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this booking?');" title="Delete">✕</button>
-                                    </form>
+                                        <form method="POST" action="" style="margin: 0;" onsubmit="return confirm('Are you sure you want to delete this booking?');">
+                                            <input type="hidden" name="id" value="<?php echo $b['id']; ?>">
+                                            <input type="hidden" name="action" value="delete">
+                                            <button type="submit" class="btn-sm btn-danger" title="Delete">✕</button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
