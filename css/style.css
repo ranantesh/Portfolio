@@ -543,10 +543,20 @@ img, svg {
 
 .hero-ctas {
     display: flex;
-    gap: 16px;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
     opacity: 0;
     animation: fade-up-hero 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     animation-delay: 0.3s;
+    width: 100%;
+}
+
+.hero-contact-row {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    max-width: 340px;
 }
 
 @keyframes fade-up-hero {
@@ -1507,6 +1517,10 @@ img, svg {
     
     .hero-subtitle {
         margin: 0 auto 30px auto;
+    }
+    
+    .hero-ctas {
+        align-items: center;
     }
     
     .hero-visual {
