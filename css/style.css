@@ -153,10 +153,18 @@ img, svg {
 }
 
 .text-gradient {
-    background: var(--gradient-hero);
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary), var(--accent-primary));
+    background-size: 300% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: gradient-shift 6s linear infinite;
+}
+
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Section Headers */
@@ -504,6 +512,8 @@ img, svg {
     line-height: 1.15;
     letter-spacing: -0.02em;
     margin-bottom: 20px;
+    opacity: 0;
+    animation: fade-up-hero 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .typing-text {
@@ -526,11 +536,28 @@ img, svg {
     color: var(--text-secondary);
     margin-bottom: 36px;
     max-width: 540px;
+    opacity: 0;
+    animation: fade-up-hero 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.15s;
 }
 
 .hero-ctas {
     display: flex;
     gap: 16px;
+    opacity: 0;
+    animation: fade-up-hero 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes fade-up-hero {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Hero Visual Graphic */
@@ -1464,13 +1491,13 @@ img, svg {
 
     /* Hero Section */
     .hero {
-        padding-top: 100px;
+        padding-top: 120px; /* More spacing to avoid header overlapping */
         padding-bottom: 60px;
     }
     
     .hero-container {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 30px;
         text-align: center;
     }
     
@@ -1484,6 +1511,31 @@ img, svg {
     
     .hero-visual {
         order: -1;
+        width: 100%;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .visual-container {
+        width: 100%;
+        height: auto;
+        max-width: 450px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile-card {
+        position: relative !important;
+        width: 100% !important;
+        transform: none !important;
+        margin: 0 auto;
+    }
+
+    .avatar-ring {
+        display: none !important;
     }
     
     .scroll-down {
