@@ -459,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const formData = new FormData(bookingForm);
             
-            fetch('booking.php', {
+            fetch('booking', {
                 method: 'POST',
                 body: formData
             })
