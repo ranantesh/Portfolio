@@ -7,7 +7,7 @@ $ADMIN_PASSWORD = 'admin';
 $dbPath = __DIR__ . '/database/portfolio.sqlite';
 
 // --- AUTHENTICATION ---
-if (isset($_POST['login'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['password'])) {
     if ($_POST['password'] === $ADMIN_PASSWORD) {
         $_SESSION['admin_logged_in'] = true;
         header("Location: admin.php");
@@ -115,7 +115,7 @@ if ($is_logged_in) {
                 <p style="color: #ef4444; font-size: 0.85rem; margin-bottom: 15px;"><?php echo htmlspecialchars($login_error); ?></p>
             <?php endif; ?>
             
-            <form method="POST" action="admin.php">
+            <form method="POST" action="">
                 <input type="password" name="password" class="form-input" placeholder="Password" required style="margin-bottom: 20px;">
                 <button type="submit" name="login" class="btn btn-primary" style="width: 100%;">Login</button>
             </form>
@@ -181,7 +181,7 @@ if ($is_logged_in) {
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <form method="POST" action="admin.php" class="action-btns">
+                                    <form method="POST" action="" class="action-btns">
                                         <input type="hidden" name="id" value="<?php echo $b['id']; ?>">
                                         <?php if ($b['status'] !== 'Completed'): ?>
                                             <button type="submit" name="action" value="complete" class="btn-sm btn-success" title="Mark Completed">✓</button>
