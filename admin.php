@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 // --- CONFIGURATION ---
 // Set your admin password here
 $ADMIN_PASSWORD = 'admin';
@@ -46,7 +45,6 @@ if ($is_logged_in) {
 
         // Handle Status Update
         if (isset($_POST['action']) && isset($_POST['id'])) {
-            file_put_contents(__DIR__ . '/bookings_log.txt', "Admin Action: " . print_r($_POST, true) . "\n", FILE_APPEND);
             $id = (int)$_POST['id'];
             if ($_POST['action'] === 'complete') {
                 $stmt = $pdo->prepare("UPDATE bookings SET status = 'Completed' WHERE id = :id");
