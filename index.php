@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranantesh | Full-Stack Developer & Web Engineer</title>
+    <meta name="description" content="Portfolio of Ranantesh, a skilled Full-Stack Developer specializing in high-performance web systems, custom e-commerce, and advanced interactive interfaces.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <!-- Background Glow Blobs -->
+    <div class="glow-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="main-header" id="main-header">
+        <div class="header-container">
+            <a href="#hero" class="logo" id="nav-logo">
+                <span class="logo-accent">&lt;</span>Ranantesh<span class="logo-accent">/&gt;</span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#hero" class="nav-link active" id="link-hero">Home</a>
+                <a href="#about" class="nav-link" id="link-about">About</a>
+                <a href="#skills" class="nav-link" id="link-skills">Skills</a>
+                <a href="#projects" class="nav-link" id="link-projects">Projects</a>
+                <a href="#timeline" class="nav-link" id="link-timeline">Timeline</a>
+                <a href="#contact" class="nav-link" id="link-contact">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Theme Toggle Button -->
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme">
+                    <!-- Sun Icon (Visible in Dark Mode) -->
+                    <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                    </svg>
+                    <!-- Moon Icon (Visible in Light Mode) -->
+                    <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                    </svg>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu">
+                    <span class="bar bar-1"></span>
+                    <span class="bar bar-2"></span>
+                    <span class="bar bar-3"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <span class="hero-badge" id="hero-badge">Available for Projects</span>
+                    <h1 class="hero-title" id="hero-title">
+                        Hi, I'm <span class="text-gradient">Ranantesh</span><br>
+                        I build <span class="typing-text" id="typing-text">high-performance systems</span>
+                    </h1>
+                    <p class="hero-subtitle" id="hero-subtitle">
+                        A full-stack web engineer dedicated to creating exceptionally fast, visually breathtaking, and highly functional digital environments. Let's engineer something spectacular.
+                    </p>
+                    <div class="hero-ctas">
+                        <a href="#projects" class="btn btn-primary" id="btn-hero-projects">
+                            View My Work
+                            <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary" id="btn-hero-contact">Contact Me</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="visual-container">
+                        <div class="avatar-ring ring-1"></div>
+                        <div class="avatar-ring ring-2"></div>
+                        <div class="avatar-ring ring-3"></div>
+                        <div class="profile-card glass">
+                            <span class="card-tag">Code Base</span>
+                            <div class="code-editor">
+                                <div class="editor-header">
+                                    <span class="dot red"></span>
+                                    <span class="dot yellow"></span>
+                                    <span class="dot green"></span>
+                                </div>
+                                <pre class="code-content"><code><span class="keyword">const</span> developer = {
+  name: <span class="string">'Ranantesh'</span>,
+  role: <span class="string">'Full-Stack Web Engineer'</span>,
+  passion: <span class="string">'High Performance UI'</span>,
+  skills: [<span class="string">'PHP'</span>, <span class="string">'WordPress'</span>, <span class="string">'JS'</span>, <span class="string">'SQL'</span>],
+  status: <span class="string">'Building spectacular apps'</span>
+};</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Scroll Indicator -->
+            <a href="#about" class="scroll-down" id="scroll-down" aria-label="Scroll down to About section">
+                <span class="mouse-icon">
+                    <span class="wheel"></span>
+                </span>
+            </a>
+        </section>
+
+        <!-- About Me Section -->
+        <section class="about section-padding" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Get To Know Me</span>
+                    <h2 class="title">About My Expertise</h2>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="about-grid">
+                    <div class="about-info glass">
+                        <h3 class="about-heading">I bridge the gap between design and robust backend engineering.</h3>
+                        <p class="about-text">
+                            With extensive experience in custom web development, database optimization, and high-performance user interfaces, I specialize in building solutions that scale. I enjoy taking complex technical requirements and translating them into elegant, user-friendly applications that load instantly and work flawlessly.
+                        </p>
+                        <p class="about-text">
+                            From refactoring database architectures and streamlining payment processing to building high-end, responsive web designs with buttery-smooth micro-animations, I make sure every detail of the codebase is built for speed and security.
+                        </p>
+                        
+                        <div class="stats-row">
+                            <div class="stat-card">
+                                <span class="stat-num" id="stat-experience">3+</span>
+                                <span class="stat-label">Years Experience</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-num" id="stat-projects">20+</span>
+                                <span class="stat-label">Projects Completed</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-num" id="stat-satisfaction">99%</span>
+                                <span class="stat-label">Uptime Architecture</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-features">
+                        <div class="feature-card glass" id="feat-frontend">
+                            <div class="feature-icon frontend-gradient">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                    <polyline points="2 17 12 22 22 17"></polyline>
+                                    <polyline points="2 12 12 17 22 12"></polyline>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4 class="feature-title">High-End Frontend Design</h4>
+                                <p class="feature-desc">Building pixel-perfect layouts, responsive liquid grids, and custom micro-animations that feel alive.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card glass" id="feat-backend">
+                            <div class="feature-icon backend-gradient">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                                    <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                                    <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4 class="feature-title">Robust Backend Engineering</h4>
+                                <p class="feature-desc">Designing robust database models, custom API integrations, session managers, and payment flows.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card glass" id="feat-wordpress">
+                            <div class="feature-icon opt-gradient">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4 class="feature-title">WordPress Plugin Development</h4>
+                                <p class="feature-desc">Architecting and building 20+ custom WordPress plugins with secure code, fast queries, and robust API integrations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills section-padding" id="skills">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">My Stack</span>
+                    <h2 class="title">Technical Abilities</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="skills-grid">
+                    <!-- Frontend Skills -->
+                    <div class="skills-card glass" id="skills-group-frontend">
+                        <h3 class="skills-card-title">
+                            <span class="title-bullet"></span> Frontend Technologies
+                        </h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">HTML5 / CSS3 (Grid & Flex)</span>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 95%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">JavaScript (ES6+ / Async)</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">TailwindCSS / Vanilla Design Systems</span>
+                                    <span class="skill-percentage">88%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 88%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Backend Skills -->
+                    <div class="skills-card glass" id="skills-group-backend">
+                        <h3 class="skills-card-title">
+                            <span class="title-bullet"></span> Backend & Database
+                        </h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">PHP (Object Oriented & MVC)</span>
+                                    <span class="skill-percentage">92%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 92%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">SQL Databases (MySQL / SQLite / PDO)</span>
+                                    <span class="skill-percentage">89%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 89%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Node.js / REST API Development</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Systems & Operations -->
+                    <div class="skills-card glass" id="skills-group-sysops">
+                        <h3 class="skills-card-title">
+                            <span class="title-bullet"></span> Operations & Architecture
+                        </h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">WordPress & Custom Plugin Development</span>
+                                    <span class="skill-percentage">92%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 92%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Version Control (Git & Team Workflows)</span>
+                                    <span class="skill-percentage">92%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 92%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">SEO Architecture & Analytics</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects section-padding" id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Recent Works</span>
+                    <h2 class="title">Case Studies & Projects</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <!-- Project Filters -->
+                <div class="project-filters" id="project-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="full-stack">Full-Stack</button>
+                    <button class="filter-btn" data-filter="frontend">Frontend & UI</button>
+                    <button class="filter-btn" data-filter="systems">APIs & Systems</button>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="projects-grid" id="projects-grid">
+                    <!-- Project 1: FastCore MVC -->
+                    <article class="project-card glass" data-category="full-stack" id="proj-fastcore">
+                        <div class="project-img-wrapper">
+                            <div class="project-placeholder-img bhagyakosh-bg">
+                                <div class="project-floating-overlay">
+                                    <svg class="mountain-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="16 18 22 12 16 6"></polyline>
+                                        <polyline points="8 6 2 12 8 18"></polyline>
+                                    </svg>
+                                    <span class="project-logo-text">FastCore MVC</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-cat">Full-Stack Framework</span>
+                                <div class="project-badges">
+                                    <span class="badge">PHP 8.2</span>
+                                    <span class="badge">MVC Architecture</span>
+                                    <span class="badge">SQL/PDO</span>
+                                    <span class="badge">Security</span>
+                                </div>
+                            </div>
+                            <h3 class="project-title">FastCore - Custom PHP Framework</h3>
+                            <p class="project-desc">
+                                A high-performance, lightweight MVC PHP framework. Engineered with an automated routing engine, dependency injection container, database abstraction layer, secure CSRF/XSS protection, and built-in template compiler designed for speed.
+                            </p>
+                            <div class="project-links">
+                                <span class="project-link-disabled inline-flex">
+                                    Private Source
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: Secure API Gateway -->
+                    <article class="project-card glass" data-category="systems" id="proj-gateway">
+                        <div class="project-img-wrapper">
+                            <div class="project-placeholder-img ruview-bg">
+                                <div class="project-floating-overlay">
+                                    <svg class="wifi-radar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                                        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                                        <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                                        <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                                        <path d="M12 2v20"></path>
+                                    </svg>
+                                    <span class="project-logo-text">Secure Gateway</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-cat">API Security & Routing</span>
+                                <div class="project-badges">
+                                    <span class="badge">Node.js</span>
+                                    <span class="badge">JWT</span>
+                                    <span class="badge">Rate Limiting</span>
+                                    <span class="badge">Redis</span>
+                                </div>
+                            </div>
+                            <h3 class="project-title">Secure RESTful API Gateway</h3>
+                            <p class="project-desc">
+                                A high-performance reverse proxy and API gateway engineered in Node.js. Features modular JWT session authorization, custom token bucket rate-limiting algorithms, dynamic routing handlers, and automated request schema validators.
+                            </p>
+                            <div class="project-links">
+                                <span class="project-link-disabled inline-flex">
+                                    Private Source
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: Himali Tourism Platform -->
+                    <article class="project-card glass" data-category="frontend" id="proj-himali">
+                        <div class="project-img-wrapper">
+                            <div class="project-placeholder-img himali-bg">
+                                <div class="project-floating-overlay">
+                                    <svg class="mountain-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M8 22l6-10 6 10H8z"></path>
+                                        <path d="M2 22l8-14 4 7"></path>
+                                    </svg>
+                                    <span class="project-logo-text">Himali Travel</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-cat">Frontend & Animation</span>
+                                <div class="project-badges">
+                                    <span class="badge">HTML5</span>
+                                    <span class="badge">CSS Grid</span>
+                                    <span class="badge">Vanilla Animations</span>
+                                    <span class="badge">PHP UI</span>
+                                </div>
+                            </div>
+                            <h3 class="project-title">Himali - Travel & Destination</h3>
+                            <p class="project-desc">
+                                A high-end tourism curation platform displaying immersive local travel packages. Built with fully responsive CSS architecture, complex interactive gallery carousels, custom maps, and modern web aesthetics to drive visitor conversions.
+                            </p>
+                            <div class="project-links">
+                                <span class="project-link-disabled inline-flex">
+                                    Internal Project
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Timeline Section -->
+        <section class="timeline section-padding" id="timeline">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">My Journey</span>
+                    <h2 class="title">Career & Achievements</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="timeline-container">
+                    <!-- Item 1: Lead Web Developer -->
+                    <div class="timeline-item glass" id="time-lead-dev">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2025 - Present</div>
+                        <h3 class="timeline-title">Lead Web Developer</h3>
+                        <h4 class="timeline-subtitle">Enterprise E-Commerce & Custom Plugins</h4>
+                        <p class="timeline-text">
+                            Spearheaded technical roadmaps, engineered custom PHP media database systems, unified visual layouts for multi-device carousels, optimized SQL schemas to support high transactional integrity, and engineered 20+ custom WordPress plugins and high-availability systems.
+                        </p>
+                    </div>
+
+                    <!-- Item 2: Backend Developer -->
+                    <div class="timeline-item glass" id="time-backend-dev">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2024 - 2025</div>
+                        <h3 class="timeline-title">Backend Web Engineer</h3>
+                        <h4 class="timeline-subtitle">SaaS Microservices & API Architecture</h4>
+                        <p class="timeline-text">
+                            Collaborated on designing robust RESTful APIs, modular JWT token security models, and dynamic server-side middleware in Node.js. Maintained server infrastructure, structured database access pools, and created responsive dashboard metrics for enterprise clients.
+                        </p>
+                    </div>
+
+                    <!-- Item 3: Independent Freelancer -->
+                    <div class="timeline-item glass" id="time-freelance">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2023 - 2024</div>
+                        <h3 class="timeline-title">Independent Full-Stack Developer</h3>
+                        <h4 class="timeline-subtitle">Freelance Custom Client Solutions</h4>
+                        <p class="timeline-text">
+                            Designed and deployed lightweight, lightning-fast portfolio sites, dynamic local business blogs, clean payment checkout setups, and custom plugins for multiple clients using Vanilla HTML, CSS, JavaScript, and custom PHP controllers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact section-padding" id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Get In Touch</span>
+                    <h2 class="title">Let's Build Together</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-info-cards">
+                        <div class="contact-card-info glass" id="card-contact-email">
+                            <div class="contact-card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <div class="contact-card-body">
+                                <h4 class="contact-card-title">Email Me</h4>
+                                <a href="mailto:contact@ranantesh.in" class="contact-card-link">contact@ranantesh.in</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-card-info glass" id="card-contact-phone">
+                            <div class="contact-card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                </svg>
+                            </div>
+                            <div class="contact-card-body">
+                                <h4 class="contact-card-title">Call Me</h4>
+                                <a href="tel:+918170982777" class="contact-card-link">+91 8170982777</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-card-info glass" id="card-contact-location">
+                            <div class="contact-card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div class="contact-card-body">
+                                <h4 class="contact-card-title">Based In</h4>
+                                <span class="contact-card-text">India (Remote Available)</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Contact Form Card -->
+                    <div class="contact-form-wrapper glass">
+                        <form id="contact-form" class="contact-form" action="contact" method="POST">
+                            <!-- Anti-Spam Honeypot Field (Hidden from Humans) -->
+                            <div class="form-group-hp" style="display:none !important; position:absolute; width:0; height:0; overflow:hidden;">
+                                <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off" placeholder="Website">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" id="contact-name" name="name" class="form-input" required placeholder=" ">
+                                    <label for="contact-name" class="form-label">Full Name</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" id="contact-email" name="email" class="form-input" required placeholder=" ">
+                                    <label for="contact-email" class="form-label">Email Address</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="contact-subject" name="subject" class="form-input" required placeholder=" ">
+                                <label for="contact-subject" class="form-label">Subject</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="contact-message" name="message" class="form-input textarea-input" required placeholder=" " rows="5"></textarea>
+                                <label for="contact-message" class="form-label">Your Message</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary form-submit-btn" id="btn-submit-contact">
+                                Send Message
+                                <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                </svg>
+                            </button>
+                        </form>
+
+                        <!-- Form Status Message -->
+                        <div class="form-status" id="form-status">
+                            <div class="status-content success-status">
+                                <svg class="status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <div>
+                                    <h4 class="status-title">Message Sent Successfully!</h4>
+                                    <p class="status-desc">Thank you! I will respond to your email within 24 hours.</p>
+                                </div>
+                                <button type="button" class="btn btn-secondary" id="btn-reset-form" style="margin-top: 15px; font-size: 0.85rem; padding: 10px 22px;">
+                                    Send Another Message
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-container">
+            <p class="footer-copy">&copy; <span id="current-year"><?php echo date("Y"); ?></span> Ranantesh. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

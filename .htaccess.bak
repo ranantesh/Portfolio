@@ -1,0 +1,58 @@
+# ----------------------------------------------------------------------
+# Premium Web Server Config (.htaccess) - Hostinger Deployment Optimized
+# ----------------------------------------------------------------------
+
+# Disable Directory Browsing for Security
+Options -Indexes
+
+# Set UTF-8 encoding as standard default
+AddDefaultCharset UTF-8
+
+# 1. Dynamic Gzip Compression (Speed & Performance)
+<IfModule mod_deflate.c>
+    # Compress HTML, CSS, JavaScript, Text, XML, SVGs, and fonts
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json application/xml application/xhtml+xml application/rss+xml application/javascript-map image/svg+xml application/vnd.ms-fontobject application/x-font-ttf font/opentype font/otf font/woff font/woff2
+    
+    # Remove browser bugs for older browsers
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+</IfModule>
+
+# 2. Browser Static Resource Caching (Leverage Browser Caching)
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+
+    # CSS & JavaScript
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType text/javascript "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType application/x-javascript "access plus 1 year"
+
+    # Images & Media
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    # Webfonts
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+</IfModule>
+
+# 3. Force HTTPS Redirect (Security & SEO)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Redirect HTTP to HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    # Serve index.php by default when visiting the root domain
+    DirectoryIndex index.php index.html
+</IfModule>
