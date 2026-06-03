@@ -652,6 +652,86 @@
         </div>
     </footer>
 
+    <!-- Booking Modal Widget -->
+    <div id="booking-modal" class="modal-overlay">
+        <div class="modal-card glass">
+            <button class="modal-close" id="btn-close-modal-x">&times;</button>
+            
+            <div class="modal-step" id="step-1">
+                <h3 class="modal-title">Schedule a Free Call</h3>
+                <p class="modal-subtitle">Pick a date and time for our 30-minute alignment session.</p>
+                
+                <div class="booking-section">
+                    <label class="section-label">Select a Date</label>
+                    <div class="date-slots-grid" id="date-slots">
+                        <!-- Dynamically populated by JS -->
+                    </div>
+                </div>
+                
+                <div class="booking-section" style="margin-top: 20px;">
+                    <label class="section-label">Select a Time Slot</label>
+                    <div class="time-slots-grid" id="time-slots">
+                        <button type="button" class="time-slot-btn" data-time="10:00 AM">10:00 AM</button>
+                        <button type="button" class="time-slot-btn" data-time="11:30 AM">11:30 AM</button>
+                        <button type="button" class="time-slot-btn" data-time="02:00 PM">02:00 PM</button>
+                        <button type="button" class="time-slot-btn" data-time="03:30 PM">03:30 PM</button>
+                        <button type="button" class="time-slot-btn" data-time="05:00 PM">05:00 PM</button>
+                        <button type="button" class="time-slot-btn" data-time="06:30 PM">06:30 PM</button>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" id="to-step-2" disabled style="width: 100%; margin-top: 25px;">
+                    Next: Enter Details &rarr;
+                </button>
+            </div>
+            
+            <div class="modal-step hidden" id="step-2">
+                <h3 class="modal-title">Your Details</h3>
+                <p class="modal-subtitle">We will meet on Zoom. Tell me a bit about your project.</p>
+                
+                <form id="booking-form" class="modal-form">
+                    <input type="hidden" id="selected-date" name="date">
+                    <input type="hidden" id="selected-time" name="time">
+                    
+                    <div class="form-group">
+                        <label for="booking-name" class="form-label">Full Name</label>
+                        <input type="text" id="booking-name" name="name" class="form-input" placeholder="e.g. Sarah Jenkins" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="booking-email" class="form-label">Email Address</label>
+                        <input type="email" id="booking-email" name="email" class="form-input" placeholder="e.g. sarah@wellnessbrand.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="booking-notes" class="form-label">Project / Brand Details</label>
+                        <textarea id="booking-notes" name="notes" class="form-input" rows="3" placeholder="e.g. Astrologer brand revamp, integrating booking system..." required></textarea>
+                    </div>
+                    
+                    <div style="display: flex; gap: 12px; margin-top: 25px;">
+                        <button type="button" class="btn btn-secondary" id="back-to-step-1" style="flex: 1;">Back</button>
+                        <button type="submit" class="btn btn-primary" style="flex: 2;">Confirm Booking</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="modal-step hidden" id="step-success" style="text-align: center; padding: 10px 0;">
+                <div class="success-checkmark" style="width: 60px; height: 60px; border-radius: 50%; background: rgba(16, 185, 129, 0.1); border: 2px solid var(--accent-primary); color: var(--accent-primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; font-size: 1.8rem; font-weight: bold;">
+                    &check;
+                </div>
+                <h3 class="modal-title">Booking Confirmed!</h3>
+                <p class="modal-subtitle" style="margin-bottom: 20px;">
+                    Your 30-minute free alignment session is scheduled for:<br>
+                    <strong id="confirmed-datetime" style="color: var(--accent-primary);"></strong>
+                </p>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.4;">
+                    A calendar invitation and Zoom meeting link have been logged/sent to your email.
+                </p>
+                <button type="button" class="btn btn-secondary modal-close-btn" style="width: 100%;">Close</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="js/app.js"></script>
     <!-- AOS & VanillaTilt Scripts -->

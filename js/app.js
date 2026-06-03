@@ -291,5 +291,201 @@ document.addEventListener('DOMContentLoaded', () => {
             "max-glare": 0.2,
         });
     }
+
+    // --- 10. INTERACTIVE BOOKING MODAL CONTROLLER ---
+    const bookingModal = document.getElementById('booking-modal');
+    const bookingTriggerBtns = document.querySelectorAll('.btn-calendly');
+    const modalCloseBtns = document.querySelectorAll('.modal-close, .modal-close-btn');
+    const dateSlotsContainer = document.getElementById('date-slots');
+    const timeSlotsGrid = document.getElementById('time-slots');
+    const toStep2Btn = document.getElementById('to-step-2');
+    const backToStep1Btn = document.getElementById('back-to-step-1');
+    const step1 = document.getElementById('step-1');
+    const step2 = document.getElementById('step-2');
+    const stepSuccess = document.getElementById('step-success');
+    const bookingForm = document.getElementById('booking-form');
+    const selectedDateInput = document.getElementById('selected-date');
+    const selectedTimeInput = document.getElementById('selected-time');
+    const confirmedDateTimeText = document.getElementById('confirmed-datetime');
+
+    let selectedDate = '';
+    let selectedTime = '';
+
+    const openBookingModal = () => {
+        if (!bookingModal) return;
+        
+        // Reset state
+        selectedDate = '';
+        selectedTime = '';
+        selectedDateInput.value = '';
+        selectedTimeInput.value = '';
+        
+        // Reset Step UI visibility
+        step1.classList.remove('hidden');
+        step2.classList.add('hidden');
+        stepSuccess.classList.add('hidden');
+        
+        // Reset selected slots visually
+        document.querySelectorAll('.date-slot-btn').forEach(btn => btn.classList.remove('selected'));
+        document.querySelectorAll('.time-slot-btn').forEach(btn => btn.classList.remove('selected'));
+        toStep2Btn.disabled = true;
+        
+        // Generate and populate date options dynamically
+        populateDateSlots();
+        
+        // Open Modal
+        bookingModal.classList.add('open');
+        document.body.style.overflow = 'hidden'; // Lock background scroll
+    };
+
+    const closeBookingModal = () => {
+        if (!bookingModal) return;
+        bookingModal.classList.remove('open');
+        document.body.style.overflow = ''; // Restore background scroll
+    };
+
+    const populateDateSlots = () => {
+        if (!dateSlotsContainer) return;
+        dateSlotsContainer.innerHTML = '';
+        
+        let daysAdded = 0;
+        let currentDay = new Date();
+        
+        while (daysAdded < 5) {
+            currentDay.setDate(currentDay.getDate() + 1); // Start tomorrow
+            
+            // Skip weekends (Saturday = 6, Sunday = 0)
+            if (currentDay.getDay() !== 0 && currentDay.getDay() !== 6) {
+                const dayName = currentDay.toLocaleDateString('en-US', { weekday: 'short' });
+                const dayNum = currentDay.getDate();
+                const monthName = currentDay.toLocaleDateString('en-US', { month: 'short' });
+                const dateStr = currentDay.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'date-slot-btn';
+                btn.dataset.date = dateStr;
+                btn.innerHTML = `
+                    <span class="day-lbl">${dayName}</span>
+                    <span class="day-val">${dayNum}</span>
+                    <span class="month-lbl">${monthName}</span>
+                `;
+                
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.date-slot-btn').forEach(b => b.classList.remove('selected'));
+                    btn.classList.add('selected');
+                    selectedDate = dateStr;
+                    selectedDateInput.value = dateStr;
+                    checkStep1Validation();
+                });
+                
+                dateSlotsContainer.appendChild(btn);
+                daysAdded++;
+            }
+        }
+    };
+
+    // Bind trigger buttons
+    bookingTriggerBtns.forEach(btn => {
+        // Prevent default link action (Calendly redirects) and trigger custom modal
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openBookingModal();
+        });
+    });
+
+    // Close buttons
+    modalCloseBtns.forEach(btn => {
+        btn.addEventListener('click', closeBookingModal);
+    });
+
+    // Close when clicking outside of card content
+    if (bookingModal) {
+        bookingModal.addEventListener('click', (e) => {
+            if (e.target === bookingModal) {
+                closeBookingModal();
+            }
+        });
+    }
+
+    // Time Slot selection
+    if (timeSlotsGrid) {
+        const timeBtns = timeSlotsGrid.querySelectorAll('.time-slot-btn');
+        timeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                timeBtns.forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                selectedTime = btn.dataset.time;
+                selectedTimeInput.value = selectedTime;
+                checkStep1Validation();
+            });
+        });
+    }
+
+    const checkStep1Validation = () => {
+        if (selectedDate && selectedTime) {
+            toStep2Btn.disabled = false;
+        } else {
+            toStep2Btn.disabled = true;
+        }
+    };
+
+    // Next button
+    if (toStep2Btn) {
+        toStep2Btn.addEventListener('click', () => {
+            step1.classList.add('hidden');
+            step2.classList.remove('hidden');
+        });
+    }
+
+    // Back button
+    if (backToStep1Btn) {
+        backToStep1Btn.addEventListener('click', () => {
+            step2.classList.add('hidden');
+            step1.classList.remove('hidden');
+        });
+    }
+
+    // Handle AJAX booking form submission
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const submitButton = bookingForm.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            
+            submitButton.disabled = true;
+            submitButton.innerHTML = 'Scheduling...';
+            
+            const formData = new FormData(bookingForm);
+            
+            fetch('booking.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => {
+                if (!res.ok) throw new Error('Booking error');
+                return res.json();
+            })
+            .then(data => {
+                if (data.status === 'success') {
+                    confirmedDateTimeText.textContent = data.datetime;
+                    step2.classList.add('hidden');
+                    stepSuccess.classList.remove('hidden');
+                    bookingForm.reset();
+                } else {
+                    alert(data.message || 'Error booking call. Please email me directly.');
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Connection error. Please try again or email directly.');
+            })
+            .finally(() => {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalText;
+            });
+        });
+    }
 });
 
