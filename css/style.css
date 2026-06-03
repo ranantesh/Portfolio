@@ -620,7 +620,7 @@ img, svg {
 
 .profile-card {
     position: absolute;
-    width: 280px;
+    width: 320px;
     padding: 20px;
     animation: float 6s ease-in-out infinite;
     transform-style: preserve-3d;
