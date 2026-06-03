@@ -1491,13 +1491,13 @@ img, svg {
 
     /* Hero Section */
     .hero {
-        padding-top: 120px; /* More spacing to avoid header overlapping */
+        padding-top: 150px; /* Increased to push hero content down below navigation */
         padding-bottom: 60px;
     }
     
     .hero-container {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 40px;
         text-align: center;
     }
     
@@ -1511,31 +1511,8 @@ img, svg {
     
     .hero-visual {
         order: -1;
-        width: 100%;
-        margin-bottom: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .visual-container {
-        width: 100%;
-        height: auto;
-        max-width: 450px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .profile-card {
-        position: relative !important;
-        width: 100% !important;
-        transform: none !important;
-        margin: 0 auto;
-    }
-
-    .avatar-ring {
-        display: none !important;
+        margin-top: 30px;
+        margin-bottom: 30px;
     }
     
     .scroll-down {
