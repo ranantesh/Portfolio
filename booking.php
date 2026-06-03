@@ -50,38 +50,42 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-// 3. Construct Email Message Body
-$email_subject = "[Free Call Booking] Alignment Session with $name";
-
-$email_body  = "You have received a new free call booking request from your portfolio.\n\n";
-$email_body .= "---------------------------------------------------------\n";
-$email_body .= "Client Name:  $name\n";
-$email_body .= "Client Email: $email\n";
-$email_body .= "Meeting Date: $date\n";
-$email_body .= "Meeting Time: $time\n";
-$email_body .= "Booking Date: " . date("Y-m-d H:i:s") . "\n";
-$email_body .= "---------------------------------------------------------\n\n";
-$email_body .= "Project & Brand Notes:\n$notes\n\n";
-$email_body .= "---------------------------------------------------------\n";
-$email_body .= "End of transmission.\n";
-
-// 4. Construct Secure Email Headers to prevent injection
-$headers = [];
-$headers[] = 'MIME-Version: 1.0';
-$headers[] = 'Content-type: text/plain; charset=utf-8';
-$headers[] = 'From: Portfolio Booking <noreply@ranantesh.in>';
-$headers[] = 'Reply-To: ' . $name . ' <' . $email . '>';
-$headers[] = 'X-Mailer: PHP/' . phpversion();
-
-$header_string = implode("\r\n", $headers);
-
-// 5. Send the Email
-$mail_sent = @mail($recipient_email, $email_subject, $email_body, $header_string);
-
-// Local Logging Fallback
-$log_file = __DIR__ . '/bookings_log.txt';
-$log_entry = "=== NEW BOOKING (" . date("Y-m-d H:i:s") . ") ===\n" . $email_body . "\n==========================================\n\n";
-@file_put_contents($log_file, $log_entry, FILE_APPEND);
+// 3. Store Booking in Database (SQLite)
+try {
+    $dbPath = __DIR__ . '/database/portfolio.sqlite';
+    $pdo = new PDO('sqlite:' . $dbPath);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    // Create table if it doesn't exist
+    $pdo->exec("CREATE TABLE IF NOT EXISTS bookings (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        email TEXT NOT NULL,
+        booking_date TEXT NOT NULL,
+        booking_time TEXT NOT NULL,
+        notes TEXT,
+        status TEXT DEFAULT 'Pending',
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )");
+    
+    // Insert new booking securely using prepared statements
+    $stmt = $pdo->prepare("INSERT INTO bookings (name, email, booking_date, booking_time, notes) VALUES (:name, :email, :date, :time, :notes)");
+    $stmt->execute([
+        ':name' => $name,
+        ':email' => $email,
+        ':date' => $date,
+        ':time' => $time,
+        ':notes' => $notes
+    ]);
+    
+} catch (PDOException $e) {
+    http_response_code(500);
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'System error saving booking. Please try again later.'
+    ]);
+    exit;
+}
 
 echo json_encode([
     'status' => 'success',
