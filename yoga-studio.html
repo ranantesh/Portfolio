@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prana Yoga London | Premium Wellness Concept</title>
+    <meta name="description" content="A premium yoga and wellness studio concept in London. Class bookings, schedules, and instructor profiles.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Main Style Sheet (Reused for variables & reset) -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --accent-yoga: #e07a5f; /* Warm Terracotta */
+            --accent-yoga-glow: rgba(224, 122, 95, 0.3);
+            --bg-yoga-card: rgba(30, 33, 45, 0.6);
+            --border-yoga: rgba(224, 122, 95, 0.15);
+        }
+        
+        body {
+            background-color: #111318;
+            color: #f4f4f7;
+        }
+
+        .back-to-portfolio {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(17, 19, 24, 0.8);
+            border: 1px solid var(--border-glass);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+            color: var(--text-primary);
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+        }
+        .back-to-portfolio:hover {
+            border-color: var(--accent-yoga);
+            color: var(--accent-yoga);
+            transform: translateX(2px);
+        }
+
+        .yoga-hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding-top: 100px;
+            overflow: hidden;
+        }
+        
+        .yoga-hero::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-yoga-glow) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            z-index: -1;
+            filter: blur(80px);
+        }
+
+        .yoga-hero-container {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .yoga-badge {
+            background: rgba(224, 122, 95, 0.08);
+            border: 1px solid var(--border-yoga);
+            color: var(--accent-yoga);
+            padding: 6px 14px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 100px;
+            margin-bottom: 24px;
+            display: inline-block;
+        }
+
+        .yoga-title {
+            font-family: var(--font-heading);
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+        .yoga-text-gradient {
+            background: linear-gradient(135deg, #e07a5f 0%, #f4a261 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-yoga {
+            background: linear-gradient(135deg, #e07a5f 0%, #f4a261 100%);
+            color: #ffffff;
+            box-shadow: 0 4px 20px var(--accent-yoga-glow);
+        }
+        .btn-yoga:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px var(--accent-yoga-glow);
+            filter: brightness(1.1);
+        }
+
+        /* Booking Widget Card */
+        .booking-widget {
+            padding: 35px;
+            border-radius: var(--radius-lg);
+            background: var(--bg-yoga-card);
+            border: 1px solid var(--border-yoga);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+        
+        .booking-widget h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .select-input {
+            width: 100%;
+            background: rgba(17, 19, 24, 0.6);
+            border: 1px solid var(--border-yoga);
+            color: var(--text-primary);
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            outline: none;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        .select-input:focus {
+            border-color: var(--accent-yoga);
+            box-shadow: 0 0 10px rgba(224, 122, 95, 0.1);
+        }
+
+        /* Yoga Schedule Section */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .schedule-card {
+            background: var(--bg-yoga-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            transition: all var(--transition-normal);
+        }
+        .schedule-card:hover {
+            border-color: var(--border-yoga);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .schedule-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .class-time {
+            font-weight: 600;
+            color: var(--accent-yoga);
+            font-size: 0.95rem;
+        }
+        .class-level {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+        }
+
+        .instructor-card {
+            overflow: hidden;
+            border-radius: var(--radius-md);
+            background: var(--bg-yoga-card);
+            border: 1px solid var(--border-glass);
+            transition: all var(--transition-normal);
+        }
+        .instructor-card:hover {
+            border-color: var(--border-yoga);
+            transform: scale(1.02);
+        }
+        
+        .instructor-img-placeholder {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #1e212d 0%, #111318 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-tertiary);
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            border-bottom: 1px solid var(--border-glass);
+            position: relative;
+        }
+        .instructor-img-placeholder svg {
+            width: 60px;
+            height: 60px;
+            opacity: 0.2;
+            color: var(--accent-yoga);
+        }
+
+        .instructor-info {
+            padding: 24px;
+        }
+
+        @media (max-width: 991px) {
+            .yoga-hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .yoga-title {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back to Portfolio Floating Button -->
+    <a href="index.html#projects" class="back-to-portfolio">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Back to Portfolio
+    </a>
+
+    <!-- Hero Section -->
+    <section class="yoga-hero">
+        <div class="container yoga-hero-container">
+            <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+                <span class="yoga-badge">Concept Wellness Studio</span>
+                <h1 class="yoga-title">
+                    Find Your Inner Flow in <span class="yoga-text-gradient">London</span>
+                </h1>
+                <p class="hero-subtitle" style="max-width: 500px;">
+                    Experience tailored vinyasa, restorative yin, and mindfulness sessions in our state-of-the-art glassmorphism sanctuary. Let your journey start today.
+                </p>
+                <a href="#booking" class="btn btn-yoga">Book a Trial Class</a>
+            </div>
+            
+            <div class="booking-widget" id="booking" data-aos="fade-left" data-aos-duration="1000" data-tilt data-tilt-glare data-tilt-max-glare="0.1">
+                <h3>Reserve Your Spot</h3>
+                <form class="booking-form" onsubmit="event.preventDefault(); alert('Concept Demo: Booking simulated successfully!');">
+                    <div>
+                        <label style="font-size: 0.85rem; margin-bottom: 6px; display: block; color: var(--text-secondary);">Select Class</label>
+                        <select class="select-input">
+                            <option>Vinyasa Flow (60 mins) - Mon & Wed 8:00 AM</option>
+                            <option>Yin Restore (75 mins) - Tue & Thu 6:30 PM</option>
+                            <option>Ashtanga Primary Series (90 mins) - Sat 9:00 AM</option>
+                            <option>Mindfulness Meditation (45 mins) - Fri 5:00 PM</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="font-size: 0.85rem; margin-bottom: 6px; display: block; color: var(--text-secondary);">Select Instructor</label>
+                        <select class="select-input">
+                            <option>Elena Rostova (Lead Yogi)</option>
+                            <option>David Vance (Vinyasa Specialist)</option>
+                            <option>Sarah Jenkins (Yin & Nidra Coach)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="font-size: 0.85rem; margin-bottom: 6px; display: block; color: var(--text-secondary);">Your Name</label>
+                        <input type="text" class="select-input" placeholder="Your Name" required>
+                    </div>
+                    <button type="submit" class="btn btn-yoga" style="width: 100%; border: none;">Book Class Now</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="section-padding" style="border-top: 1px solid var(--border-glass);">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle" style="color: var(--accent-yoga);">Studio Timetable</span>
+                <h2 class="title">Upcoming Classes</h2>
+                <div class="title-underline" style="background: linear-gradient(135deg, #e07a5f 0%, #f4a261 100%);"></div>
+            </div>
+            
+            <div class="schedule-grid">
+                <!-- Card 1 -->
+                <div class="schedule-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="schedule-header">
+                        <span class="class-time">08:00 - 09:00 AM</span>
+                        <span class="class-level">All Levels</span>
+                    </div>
+                    <h3 style="font-family: var(--font-heading); margin-bottom: 8px;">Vinyasa Flow</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px;">A fluid alignment of breath and movement designed to energize your body and focus the mind.</p>
+                    <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-primary);">Coach: David Vance</span>
+                </div>
+                <!-- Card 2 -->
+                <div class="schedule-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="schedule-header">
+                        <span class="class-time">05:30 - 06:45 PM</span>
+                        <span class="class-level">Intermediate</span>
+                    </div>
+                    <h3 style="font-family: var(--font-heading); margin-bottom: 8px;">Dynamic Hatha</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px;">Focus on posture holding and core centering. Ideal for building physical strength and flexibility.</p>
+                    <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-primary);">Coach: Elena Rostova</span>
+                </div>
+                <!-- Card 3 -->
+                <div class="schedule-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="schedule-header">
+                        <span class="class-time">07:00 - 08:15 PM</span>
+                        <span class="class-level">Beginner</span>
+                    </div>
+                    <h3 style="font-family: var(--font-heading); margin-bottom: 8px;">Yin & Restore</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px;">Slow-paced meditative posture targets deep connective tissues, promoting deep physical recovery.</p>
+                    <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-primary);">Coach: Sarah Jenkins</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructors Section -->
+    <section class="section-padding" style="background: rgba(255, 255, 255, 0.01); border-top: 1px solid var(--border-glass);">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle" style="color: var(--accent-yoga);">Meet Your Guides</span>
+                <h2 class="title">Expert Instructors</h2>
+                <div class="title-underline" style="background: linear-gradient(135deg, #e07a5f 0%, #f4a261 100%);"></div>
+            </div>
+            
+            <div class="schedule-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <!-- Instructor 1 -->
+                <div class="instructor-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="instructor-img-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5Z"/>
+                            <path d="M19.4 15a8.91 8.91 0 0 0-7.4-4 8.91 8.91 0 0 0-7.4 4A6 6 0 0 0 10 22h4a6 6 0 0 0 5.4-7Z"/>
+                        </svg>
+                        <span style="position: absolute; bottom: 15px; font-size: 0.8rem; text-transform: uppercase; tracking: 0.1em; color: var(--accent-yoga);">Lead Yogi</span>
+                    </div>
+                    <div class="instructor-info">
+                        <h3 style="font-family: var(--font-heading); margin-bottom: 6px;">Elena Rostova</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary);">10+ years teaching internationally. Elena focuses on deep mindfulness integration within active physical flows.</p>
+                    </div>
+                </div>
+                <!-- Instructor 2 -->
+                <div class="instructor-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="instructor-img-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5Z"/>
+                            <path d="M19.4 15a8.91 8.91 0 0 0-7.4-4 8.91 8.91 0 0 0-7.4 4A6 6 0 0 0 10 22h4a6 6 0 0 0 5.4-7Z"/>
+                        </svg>
+                        <span style="position: absolute; bottom: 15px; font-size: 0.8rem; text-transform: uppercase; tracking: 0.1em; color: var(--accent-yoga);">Vinyasa Coach</span>
+                    </div>
+                    <div class="instructor-info">
+                        <h3 style="font-family: var(--font-heading); margin-bottom: 6px;">David Vance</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary);">Focuses on structural alignment and strength development, ensuring a safe yet challenging physical practice.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer" style="border-top: 1px solid var(--border-glass);">
+        <div class="container footer-container">
+            <p class="footer-copy">&copy; 2026 Prana Yoga London. Created by Ranantesh.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({
+                once: true,
+                offset: 50,
+                duration: 800,
+                easing: 'ease-out-cubic',
+            });
+            VanillaTilt.init(document.querySelectorAll("[data-tilt]"));
+        });
+    </script>
+</body>
+</html>

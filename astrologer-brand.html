@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veda Astrology | Premium Spiritual Platform Concept</title>
+    <meta name="description" content="Premium Vedic astrology consultations, birth chart calculations, and spiritual path counseling.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Main Style Sheet (Reused for variables & reset) -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --accent-astro: #d4af37; /* Cosmic Gold */
+            --accent-astro-glow: rgba(212, 175, 55, 0.25);
+            --bg-astro-card: rgba(14, 18, 36, 0.7);
+            --border-astro: rgba(212, 175, 55, 0.15);
+        }
+        
+        body {
+            background-color: #060913;
+            color: #f0f2f5;
+        }
+
+        .back-to-portfolio {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(6, 9, 19, 0.8);
+            border: 1px solid var(--border-glass);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+            color: var(--text-primary);
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+        }
+        .back-to-portfolio:hover {
+            border-color: var(--accent-astro);
+            color: var(--accent-astro);
+            transform: translateX(2px);
+        }
+
+        .astro-hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding-top: 100px;
+            overflow: hidden;
+        }
+        
+        .astro-hero::after {
+            content: '';
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, var(--accent-astro-glow) 0%, transparent 70%);
+            top: -250px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+            filter: blur(100px);
+        }
+
+        .astro-hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .astro-badge {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--border-astro);
+            color: var(--accent-astro);
+            padding: 6px 14px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 100px;
+            margin-bottom: 24px;
+            display: inline-block;
+        }
+
+        .astro-title {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+        .astro-text-gradient {
+            background: linear-gradient(135deg, #d4af37 0%, #f9e076 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-astro {
+            background: linear-gradient(135deg, #d4af37 0%, #f3c63f 100%);
+            color: #111;
+            font-weight: 700;
+            box-shadow: 0 4px 20px var(--accent-astro-glow);
+        }
+        .btn-astro:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px var(--accent-astro-glow);
+            filter: brightness(1.1);
+        }
+
+        /* Chart Widget Card */
+        .chart-widget {
+            padding: 35px;
+            border-radius: var(--radius-lg);
+            background: var(--bg-astro-card);
+            border: 1px solid var(--border-astro);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+        
+        .chart-widget h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .chart-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .astro-input {
+            width: 100%;
+            background: rgba(6, 9, 19, 0.6);
+            border: 1px solid var(--border-astro);
+            color: var(--text-primary);
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            outline: none;
+            transition: all var(--transition-fast);
+        }
+        .astro-input:focus {
+            border-color: var(--accent-astro);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+        }
+
+        /* Services Section */
+        .astro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .astro-card {
+            background: var(--bg-astro-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            transition: all var(--transition-normal);
+            position: relative;
+        }
+        .astro-card:hover {
+            border-color: var(--border-astro);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .astro-icon-wrapper {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--border-astro);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-astro);
+            margin-bottom: 20px;
+        }
+        .astro-icon-wrapper svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        @media (max-width: 991px) {
+            .astro-hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .astro-title {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back to Portfolio Floating Button -->
+    <a href="index.html#projects" class="back-to-portfolio">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Back to Portfolio
+    </a>
+
+    <!-- Hero Section -->
+    <section class="astro-hero">
+        <div class="container astro-hero-container">
+            <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+                <span class="astro-badge">Vedic Astrologer Concept</span>
+                <h1 class="astro-title">
+                    Align Your Path with <span class="astro-text-gradient">Celestial Wisdom</span>
+                </h1>
+                <p class="hero-subtitle" style="max-width: 500px;">
+                    Get high-accuracy birth chart readings, compatibility matching, and dasha timeline mapping directly from a professional Vedic counselor.
+                </p>
+                <a href="#services" class="btn btn-astro" style="display: inline-flex; align-items: center; gap: 8px;">
+                    Explore Consultations
+                </a>
+            </div>
+            
+            <div class="chart-widget" data-aos="fade-left" data-aos-duration="1000" data-tilt data-tilt-glare data-tilt-max-glare="0.1">
+                <h3>Calculate Birth Chart</h3>
+                <form class="chart-form" onsubmit="event.preventDefault(); alert('Concept Demo: Kundali generated successfully! (Calculating degrees...)');">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                        <div>
+                            <label style="font-size: 0.85rem; margin-bottom: 6px; display: block; color: var(--text-secondary);">Date of Birth</label>
+                            <input type="date" class="astro-input" required>
+                        </div>
+                        <div>
+                            <label style="font-size: 0.85rem; margin-bottom: 6px; display: block; color: var(--text-secondary);">Time of Birth</label>
+                            <input type="time" class="astro-input" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label style="font-size: 0.85rem; margin-bottom: 6px; display: block; color: var(--text-secondary);">Place of Birth</label>
+                        <input type="text" class="astro-input" placeholder="e.g. London, UK" required>
+                    </div>
+                    <div>
+                        <label style="font-size: 0.85rem; margin-bottom: 6px; display: block; color: var(--text-secondary);">Name</label>
+                        <input type="text" class="astro-input" placeholder="Your Name" required>
+                    </div>
+                    <button type="submit" class="btn btn-astro" style="width: 100%; border: none;">Generate Kundali</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section-padding" id="services" style="border-top: 1px solid var(--border-glass);">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle" style="color: var(--accent-astro);">Astrology Readings</span>
+                <h2 class="title">Services & Consultations</h2>
+                <div class="title-underline" style="background: linear-gradient(135deg, #d4af37 0%, #f9e076 100%);"></div>
+            </div>
+            
+            <div class="astro-grid">
+                <!-- Card 1 -->
+                <div class="astro-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="astro-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <circle cx="12" cy="12" r="6"></circle>
+                            <circle cx="12" cy="12" r="2"></circle>
+                        </svg>
+                    </div>
+                    <h3 style="font-family: var(--font-heading); margin-bottom: 12px; font-weight: 700;">Birth Chart Audit</h3>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
+                        A detailed 60-minute analysis of your natal chart covering lagna (rising sign), graha positions, and house configurations.
+                    </p>
+                    <span style="font-size: 0.9rem; font-weight: 700; color: var(--accent-astro);">$150 / session</span>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="astro-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="astro-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 21a9 9 0 0 0 9-9 9 9 0 0 0-9-9 9 9 0 0 0-9 9 9 9 0 0 0 9 9Z"/>
+                            <path d="M12 3a9 9 0 0 0 0 18"/>
+                        </svg>
+                    </div>
+                    <h3 style="font-family: var(--font-heading); margin-bottom: 12px; font-weight: 700;">Dasha & Timing</h3>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
+                        Map out your planetary timelines (Vimshottari Dasha) to isolate transition periods, career shifts, and spiritual windows.
+                    </p>
+                    <span style="font-size: 0.9rem; font-weight: 700; color: var(--accent-astro);">$180 / session</span>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="astro-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="astro-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                        </svg>
+                    </div>
+                    <h3 style="font-family: var(--font-heading); margin-bottom: 12px; font-weight: 700;">Compatibility Audit</h3>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
+                        Vedic synastry reading using Ashta-Kuta (36-point matching) to evaluate spiritual, emotional, and social alignment.
+                    </p>
+                    <span style="font-size: 0.9rem; font-weight: 700; color: var(--accent-astro);">$220 / session</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer" style="border-top: 1px solid var(--border-glass);">
+        <div class="container footer-container">
+            <p class="footer-copy">&copy; 2026 Veda Astrology. Created by Ranantesh.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({
+                once: true,
+                offset: 50,
+                duration: 800,
+                easing: 'ease-out-cubic',
+            });
+            VanillaTilt.init(document.querySelectorAll("[data-tilt]"));
+        });
+    </script>
+</body>
+</html>
