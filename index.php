@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ranantesh | Full-Stack Developer & Web Engineer</title>
     <meta name="description" content="Portfolio of Ranantesh, a skilled Full-Stack Developer specializing in high-performance web systems, custom e-commerce, and advanced interactive interfaces.">
+    <meta name="robots" content="noindex, nofollow">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
