@@ -5,7 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 0. WELCOME PRELOADER SCREEN CONTROLLER (3.5 SECONDS) ---
+    // --- 0. WELCOME PRELOADER SCREEN CONTROLLER (3 SECONDS) ---
     const preloader = document.getElementById('welcome-preloader');
     const progressBar = document.getElementById('preloader-progress-bar');
     const statusText = document.getElementById('preloader-status');
@@ -30,9 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     setTimeout(() => {
                         if (preloader.parentNode) preloader.remove();
                     }, 600);
-                }, 300);
+                }, 250);
             }
-        }, 175);
+        }, 150);
     }
 
     // --- 1. DARK / LIGHT THEME TOGGLE CONTROLLER ---
