@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /index.html
+Disallow: /scratch/
+Disallow: /admin.php
+Disallow: /database/
+Disallow: /database.sqlite
+Disallow: /bookings_log.txt
+Disallow: /messages_log.txt
+Disallow: /.git/
+Disallow: /.system_generated/
+
+Sitemap: https://ranantesh.in/sitemap.xml
