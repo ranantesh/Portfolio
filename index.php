@@ -13,6 +13,7 @@
     <meta name="description" content="Production-ready technical execution: Website Development, E-Commerce, 10-30 min Quick Commerce, Custom APIs, WordPress Plugins, Mobile Apps, CRM, WhatsApp Marketing & AI Support Bots.">
     <meta name="keywords" content="Ranantesh, SaaS Engineer, Digital Solutions Architect, Full Stack Developer, E-Commerce Development, Quick Commerce, Custom API Integration, WordPress Plugins, Mobile Apps, WhatsApp Cloud API, AI Customer Support Bot, MTPS API">
     <meta name="author" content="Ranantesh">
+    <meta name="google-site-verification" content="google6c869519c15c768a">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ranantesh.in/">
 
